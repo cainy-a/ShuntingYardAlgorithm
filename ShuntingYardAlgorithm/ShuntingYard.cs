@@ -6,26 +6,49 @@ namespace ShuntingYardAlgorithm
 {
     public class ShuntingYard
     {
+        /// <summary>
+        /// Input to Shunting-Yard Algorithm
+        /// </summary>
         public Symbol[] Input { get; private set; }
 
+        /// <summary>
+        /// Stack of operators, used while Shunt()ing, empty otherwise
+        /// </summary>
         public Stack<Operator> OperatorStack { get; private set; }
 
+        /// <summary>
+        /// Output of last Shunt()
+        /// </summary>
         public Symbol[] Output { get; private set; }
 
+        /// <summary>
+        /// Shunting-Yard algorithm: convert infix notation to RPN
+        /// </summary>
+        /// <param name="equation">A string of space-separated operators and operands</param>
         public ShuntingYard(string equation)
         {
             Input = ParseEquation(equation).ToArray();
             OperatorStack = new Stack<Operator>();
         }
 
+        /// <summary>
+        /// Shunting-Yard algorithm: convert infix notation to RPN
+        /// </summary>
+        /// <param name="equation">List or Array of Symbols</param>
         public ShuntingYard(IEnumerable<Symbol> equation)
         {
             Input = equation.ToArray();
             OperatorStack = new Stack<Operator>();
         }
 
+        /// <summary>
+        /// Whether everything is set up ready for Shunt()
+        /// </summary>
         public bool ShuntValid => Input != null && Input.Length != 0;
 
+        /// <summary>
+        /// Performs the Shunting-Yard Algorithm
+        /// </summary>
         public void Shunt()
         {
             // O(n)
@@ -84,6 +107,11 @@ namespace ShuntingYardAlgorithm
             Output = working.ToArray();
         }
 
+        /// <summary>
+        /// Parses a string representing an equation into an equivalent IEnumerable
+        /// </summary>
+        /// <param name="inputEquation">A string of space-separated operators and operands</param>
+        /// <returns>An IEnumerable of Symbol</returns>
         public static IEnumerable<Symbol> ParseEquation(string inputEquation)
         {
             var tokens = inputEquation

@@ -16,7 +16,7 @@ namespace ShuntingYardAlgorithm.Tests
         {
             var yard = new ShuntingYard("3 + 4 / 6 ( 12 * 75 ) - 3");
 
-            IEnumerable<string> expected = new[] { "3", "+", "4", "/", "6", "(", "12", "*", "75", ")", "-", "3" };
+            IEnumerable<string> expected = new[] {"3", "+", "4", "/", "6", "(", "12", "*", "75", ")", "-", "3"};
             var actual = yard.Input.Select(s => s.ToString());
 
             Assert.AreEqual(expected, actual);
@@ -42,16 +42,30 @@ namespace ShuntingYardAlgorithm.Tests
         [Test]
         public void AdvancedShuntTest()
         {
-            /* TODO: make this test use this equation: 3 + 4 x 2 / ( 1 - 5 ) ^ 2 ^ 3
-               it should return this: 3 4 2 x 1 5 - 2 3 ^ ^ / + */
-
             var yard = new ShuntingYard(new Symbol[]
-                {new Operand(3), new Operator("+", Operators.Addition, 2), new Operand(4)});
+            {
+                new Operand(3), new Operator("+", Operators.Addition, 2), new Operand(4),
+                new Operator("*", Operators.Multiplication, 3), new Operand(2),
+                new Operator("/", Operators.Division, 3), new Operator("(", Operators.OpenBracket, 0), new Operand(1),
+                new Operator("-", Operators.Subtraction, 2), new Operand(5),
+                new Operator(")", Operators.CloseBracket, 0),
+                new Operator("^", Operators.Power, 4, true), new Operand(2),
+                new Operator("^", Operators.Power, 4, true), new Operand(3)
+            });
 
             Assert.True(yard.ShuntValid);
             yard.Shunt();
             Assert.IsEmpty(yard.OperatorStack);
-            var expected = new Symbol[] {new Operand(3), new Operand(4), new Operator("+", Operators.Addition, 2)}
+            var expected = new Symbol[]
+                {
+                    new Operand(3), new Operand(4), new Operand(2), new Operator("*", Operators.Multiplication, 3),
+                    new Operand(1), new Operand(5), new Operator("-", Operators.Subtraction, 2),
+                    new Operand(2), new Operand(3),
+                    new Operator("^", Operators.Power, 4, true),
+                    new Operator("^", Operators.Power, 4, true),
+                    new Operator("/", Operators.Division, 3),
+                    new Operator("+", Operators.Addition, 2)
+                }
                 .Select(s => s.ToString());
             var actual = yard.Output
                 .Select(s => s.ToString());

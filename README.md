@@ -5,9 +5,9 @@ An implementation of [Dijkstra's Shunting-Yard Algorithm](https://en.m.wikipedia
 
 ## Usage
 ### To use standalone
-- Download a zip build and run `ShuntingYardAlgorithm.Cli.exe`
+- Download a "cli" build and run `ShuntingYardAlgorithm.Cli.exe`
 ### To use in a project
-- Download a dll build, and reference it. (Might do Nuget if I get time)
+- Download a "lib" build, and reference it. (Might do Nuget if I get time)
 - Create a `ShuntingYard`, and populate it either with a space-separated string, or with a set of `Symbol`s.
 - Check to make sure that `ShuntValid` is true (or just use a try catch I don't care), then run `Shunt()`.
 - Finally get `Output`, which is a `Symbol[]` and do as you wish with it.

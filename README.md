@@ -35,6 +35,7 @@ Members:
 
 Static Methods:
 - `ParseEquation()`, `IEnumerable<Symbol>`, `public static`: Parses a string representing an equation into an equivalent IEnumerable.
+	Accepted names for functions are: `sin`, `cos`, `tan`, `min`, `max`, and `func`
 	The order of operations used is as follows:
 	* Functions
 	* Powers

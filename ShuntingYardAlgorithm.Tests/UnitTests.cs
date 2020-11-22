@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 
 namespace ShuntingYardAlgorithm.Tests
 {
@@ -67,6 +69,37 @@ namespace ShuntingYardAlgorithm.Tests
                     new Operator("+", Operators.Addition, 2)
                 }
                 .Select(s => s.ToString());
+            var actual = yard.Output
+                .Select(s => s.ToString());
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void FunctionShuntTest()
+        {
+            // It'll be fun to see how it deals with Pi!
+            var yard = new ShuntingYard(new Symbol[]
+            {
+                new Operator("sin", Operators.Function, 5), new Operator("(", Operators.OpenBracket, 0),
+                new Operator("max", Operators.Function, 5), new Operator("(", Operators.OpenBracket, 0),
+                new Operand(2), new Operand(3), new Operator(")", Operators.CloseBracket, 0),
+                new Operator("/", Operators.Division, 3),
+                new Operand(3), new Operator("*", Operators.Multiplication, 3), new Operand((float) Math.PI),
+                new Operator(")", Operators.CloseBracket, 0)
+            });
+
+            Assert.True(yard.ShuntValid);
+            yard.Shunt();
+            Assert.IsEmpty(yard.OperatorStack);
+            var expected = new Symbol[]
+                {
+                    new Operand(2), new Operand(3), new Operator("max", Operators.Function, 5), new Operand(3),
+                    new Operator("/", Operators.Division, 3), new Operand((float) Math.PI),
+                    new Operator("*", Operators.Multiplication, 3), new Operator("sin", Operators.Function, 5)
+                }
+                .Select(s => s.ToString());
+
             var actual = yard.Output
                 .Select(s => s.ToString());
 

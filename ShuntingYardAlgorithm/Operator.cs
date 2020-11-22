@@ -24,6 +24,7 @@
         Division,
         OpenBracket,
         CloseBracket,
-        Power
+        Power,
+        Function
     }
 }

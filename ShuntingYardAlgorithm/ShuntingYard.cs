@@ -42,7 +42,13 @@ namespace ShuntingYardAlgorithm
                 { // Operators
                     var op = (Operator) symbol;
 
-                    // TODO: If function, push straight to stack and continue; (need to add functions first)
+                    // If function, Push() to stack and continue;
+                    if (op.Op == Operators.Function)
+                    {
+                        OperatorStack.Push(op);
+                        continue;
+                    }
+
                     while ((OperatorStack.Count != 0 // Stack not empty!
                             && (OperatorStack.Peek().Precedence >
                                 op.Precedence // Top operator has higher precedence than current one
@@ -110,6 +116,14 @@ namespace ShuntingYardAlgorithm
                         break;
                     case "^":
                         working.Add(new Operator(token, Operators.Power, 4, true));
+                        break;
+                    case "max":
+                    case "min":
+                    case "sin":
+                    case "cos":
+                    case "tan":
+                    case "func":
+                        working.Add(new Operator(token, Operators.Function, 5));
                         break;
                     default:
                         var isValidInt = int.TryParse(token, out var parsedInt);

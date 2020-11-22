@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShuntingYardAlgorithm", "ShuntingYardAlgorithm\ShuntingYardAlgorithm.csproj", "{3E4ECAD2-820B-40BE-B56E-B46518AD799F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShuntingYardAlgorithm", "ShuntingYardAlgorithm\ShuntingYardAlgorithm.csproj", "{3E4ECAD2-820B-40BE-B56E-B46518AD799F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShuntingYardAlgorithm.Tests", "ShuntingYardAlgorithm.Tests\ShuntingYardAlgorithm.Tests.csproj", "{3388FBE4-E3F1-4149-BFE3-E40A8E369208}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShuntingYardAlgorithm.Tests", "ShuntingYardAlgorithm.Tests\ShuntingYardAlgorithm.Tests.csproj", "{3388FBE4-E3F1-4149-BFE3-E40A8E369208}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShuntingYardAlgorithm.Cli", "ShuntingYardAlgorithm.Cli\ShuntingYardAlgorithm.Cli.csproj", "{59E2621F-BA3C-4BC5-9404-EF8343E542A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3388FBE4-E3F1-4149-BFE3-E40A8E369208}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3388FBE4-E3F1-4149-BFE3-E40A8E369208}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3388FBE4-E3F1-4149-BFE3-E40A8E369208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59E2621F-BA3C-4BC5-9404-EF8343E542A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59E2621F-BA3C-4BC5-9404-EF8343E542A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59E2621F-BA3C-4BC5-9404-EF8343E542A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59E2621F-BA3C-4BC5-9404-EF8343E542A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
